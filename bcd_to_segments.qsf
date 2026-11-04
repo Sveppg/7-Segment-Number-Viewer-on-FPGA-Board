@@ -1,0 +1,145 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2022  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and any partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
+# Date created = 11:24:57  April 23, 2024
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		bcd_to_segments_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Intel recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+# Quartus Prime project assignment file for Terasic DE2-115 (Cyclone IV E)
+# Target: EP4CE115F29C7
+# Pin assignments based on DE2-115 User Manual, tables 4-1 through 4-5.
+# IMPORTANT: JP7 must be set to 2.5 V (pins 5-6 shorted) for the JP7-controlled I/O banks.
+# This file uses the original project's relative path layout: ../*.vhd
+
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name DEVICE EP4CE115F29C7
+set_global_assignment -name TOP_LEVEL_ENTITY binary_to_segments
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 21.1.1
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "11:24:57  APRIL 23, 2024"
+set_global_assignment -name LAST_QUARTUS_VERSION "25.1std.0 Lite Edition"
+set_global_assignment -name NUM_PARALLEL_PROCESSORS 4
+set_global_assignment -name VHDL_FILE ../bcd_to_segments_encoder.vhd
+set_global_assignment -name VHDL_FILE ../binary_to_bcd.vhd
+set_global_assignment -name VHDL_FILE ../binary_to_segments.vhd
+# Testbench specified for NativeLink below; not a synthesizable top-level source.
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+#set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+#set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+#set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name EDA_SIMULATION_TOOL "Questa Altera FPGA (Verilog)"
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH binary_to_segments_tb -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME binary_to_segments_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id binary_to_segments_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME binary_to_segments_tb -section_id binary_to_segments_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE ../binary_to_segments_tb.vhd -section_id binary_to_segments_tb
+set_global_assignment -name BDF_FILE bcd_to_segments.bdf
+
+
+# I/O assignments (segment_out[0:6]=HEX0, [7:13]=HEX1, [14:20]=HEX2)
+set_location_assignment PIN_Y2 -to clk_in
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clk_in
+set_location_assignment PIN_M23 -to rst_in
+set_instance_assignment -name IO_STANDARD "2.5 V" -to rst_in
+set_location_assignment PIN_M21 -to sta_in
+set_instance_assignment -name IO_STANDARD "2.5 V" -to sta_in
+set_location_assignment PIN_AB28 -to bin_in[0]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to bin_in[0]
+set_location_assignment PIN_AC28 -to bin_in[1]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to bin_in[1]
+set_location_assignment PIN_AC27 -to bin_in[2]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to bin_in[2]
+set_location_assignment PIN_AD27 -to bin_in[3]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to bin_in[3]
+set_location_assignment PIN_AB27 -to bin_in[4]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to bin_in[4]
+set_location_assignment PIN_AC26 -to bin_in[5]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to bin_in[5]
+set_location_assignment PIN_AD26 -to bin_in[6]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to bin_in[6]
+set_location_assignment PIN_AC25 -to ltn_in
+set_instance_assignment -name IO_STANDARD "2.5 V" -to ltn_in
+set_location_assignment PIN_AB25 -to bln_in
+set_instance_assignment -name IO_STANDARD "2.5 V" -to bln_in
+set_location_assignment PIN_G18 -to segment_out[0]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to segment_out[0]
+set_location_assignment PIN_F22 -to segment_out[1]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to segment_out[1]
+set_location_assignment PIN_E17 -to segment_out[2]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to segment_out[2]
+set_location_assignment PIN_L26 -to segment_out[3]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to segment_out[3]
+set_location_assignment PIN_L25 -to segment_out[4]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to segment_out[4]
+set_location_assignment PIN_J22 -to segment_out[5]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to segment_out[5]
+set_location_assignment PIN_H22 -to segment_out[6]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to segment_out[6]
+
+
+
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+
+
+# HEX1
+set_location_assignment PIN_M24 -to segment_out[7]
+set_location_assignment PIN_Y22 -to segment_out[8]
+set_location_assignment PIN_W21 -to segment_out[9]
+set_location_assignment PIN_W22 -to segment_out[10]
+set_location_assignment PIN_W25 -to segment_out[11]
+set_location_assignment PIN_U23 -to segment_out[12]
+set_location_assignment PIN_U24 -to segment_out[13]
+
+# HEX2
+set_location_assignment PIN_AA25 -to segment_out[14]
+set_location_assignment PIN_AA26 -to segment_out[15]
+set_location_assignment PIN_Y25 -to segment_out[16]
+set_location_assignment PIN_W26 -to segment_out[17]
+set_location_assignment PIN_Y26 -to segment_out[18]
+set_location_assignment PIN_W27 -to segment_out[19]
+set_location_assignment PIN_W28 -to segment_out[20]
+
+# LEDG0
+set_location_assignment PIN_E21 -to busy_out
+set_global_assignment -name SDC_FILE bcd_to_segments.sdc
+
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
