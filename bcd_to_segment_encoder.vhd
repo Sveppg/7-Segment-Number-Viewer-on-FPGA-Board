@@ -42,19 +42,19 @@ USE ieee.numeric_std.all;
 -- entity
 ------------------------------------------------------------------------------
 
-ENTITY bcd_to_segments_encoder IS
+ENTITY bcd_to_segment_encoder IS
     PORT (  ltn_in : in std_logic;                                            -- when '0' -> test mode, else normal mode
             bln_in : in std_logic;                                            -- when in test mode: 1 sets all segments, 0 resets all segments
             bcd_in : in std_logic_vector(3 downto 0);                         -- BCD input
             a_out, b_out, c_out, d_out, e_out, f_out, g_out : out std_logic   -- segments
 	  );
-END ENTITY bcd_to_segments_encoder;
+END ENTITY bcd_to_segment_encoder;
 
 
 ------------------------------------------------------------------------------
 -- architecture
 ------------------------------------------------------------------------------
-ARCHITECTURE behav OF bcd_to_segments_encoder IS
+ARCHITECTURE behav OF bcd_to_segment_encoder IS
 
 ------------------------------------------------------------------------------
 -- signals
